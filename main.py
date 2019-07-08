@@ -101,7 +101,7 @@ def main():
     print("Hello,Summer.")
     global maps,turn,img_list,r_img
     lines=3
-    files='C://Users//12806//Desktop//Summer Idea//img.jpg'
+    files='example.jpg'
     r_img,img_list,size,screen=load_image(files,lines)
     maps,turn=new_map()
 
