@@ -3,4 +3,5 @@ class brick():
         self.pos=pos
         self.img=img
 
-
+    def __eq__(self,x):
+        pass

@@ -5,6 +5,12 @@ class brick_group(object):
     def add(self,brick):
         self.bricks.append(brick)
 
+    def get_id(self):
+        a={}
+        for i in self.bricks:
+            a[i.pos]=i.img[1]
+        return a
+
     def get_pos(self):
         pos=[]
         for i in self.bricks:
@@ -32,8 +38,7 @@ class brick_group(object):
             self.add(brick.brick(value,key))
 
     def __eq__(self,other):
-        if type(other)==type(self):
-            return set(self.bricks)==set(other.bricks)
+        pass
 
     def __len__(self):
         return len(self.bricks)
