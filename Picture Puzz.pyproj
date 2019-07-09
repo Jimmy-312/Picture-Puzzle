@@ -22,7 +22,19 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="main.py" />
+    <Compile Include="brick.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="brick_group.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="puzzlepicture.py" />
+    <Compile Include="main.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="example.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
