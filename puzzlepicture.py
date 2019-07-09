@@ -8,20 +8,20 @@ def load_image(files,lines):
     x,y=img.size
     x1,y1=int(x/lines),int(y/lines)
     brick_list=brick_group()
+    ID=0
     
     for i in range(lines):
         for j in range(lines):
             loc=(i*x1,j*y1,(i+1)*x1,(j+1)*y1)
-            a=brick(img.crop(loc),(i,j))
+            a=brick([img.crop(loc),ID],(i,j))
             brick_list.add(a)
-    
-    return brick_list,(x1,y1),(x,y)
+            ID+=1
 
-def new_map(brick_list):
     num=randint(0,len(brick_list)-1)
     turn=brick_list[num].pos
     brick_list.remove(turn)
-    return brick_list,turn
+    
+    return brick_list,(x1,y1),(x,y),turn
 
 def get_loc(loc,size):
     return [loc[0]//size[0],loc[1]//size[1]]
@@ -34,16 +34,15 @@ def move(click_loc,turn,brick_list):
         c,t,d=a,0,x  
     else:
         c,t,d=b,1,y
-    #print((a,b),(x,y))
     m=abs(c-d)
     flag=repr(c-d)[0] if repr(c-d)[0]=='-' else '+'
+
     for i in range(m):
         d1=eval(str(d)+flag+str(i))
         d2=eval(str(d1)+flag+'1')
         p1,p2=[x,y],[x,y]
         p1[t],p2[t]=d1,d2
         p1,p2=tuple(p1),tuple(p2)
-        print(p1,p2)
         brick_list[p1]=brick_list[p2].img
         
     turn=(a,b)
@@ -63,9 +62,9 @@ def move(click_loc,turn,brick_list):
     for i in maps:
         out[i[1]][i[0]]='*'
     for i in out:
-        print(i)'''
+        print(i)
 
 def isfinish(img1,img2):
     if img1==img2:
         return True
-    return False
+    return False'''
