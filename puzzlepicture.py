@@ -68,23 +68,3 @@ def move(click_loc,turn,brick_list):
     turn=(a,b)
     brick_list.remove((a,b))
     return turn,brick_list
-
-#be used to exam codes
-def output(maps,lines):
-    out=[]
-    for i in range(lines):
-        out.append([])
-        for j in range(lines):
-            out[i].append([])
-    for i in range(lines):
-        for j in range(lines):
-            out[j][i]='-'
-    for i in maps:
-        out[i.pos[1]][i.pos[0]]=i.img[1]
-    for i in out:
-        print(i)
-'''
-def isfinish(img1,img2):
-    if img1==img2:
-        return True
-    return False'''
