@@ -12,16 +12,17 @@ def end_win(img1,img2,size,DIS):
 
 def main():
     print("Hello,Summer.")
-    lines,files=3,'example.jpg'
+    lines,files=(8,6),'example.jpg'
     bricks,sep,size,turn=pz.load_image(files,lines)
     ans=bricks.get_id()
+    #bricks=pz.recreate_map(bricks)
 
     pygame.init()
     DIS=pygame.display.set_mode(size)
  
     while True:
-        DIS.fill((0,0,0))
-        for i in bricks.bricks:
+        DIS.fill((255,255,255))
+        for i in bricks:
             img=i.img[0]
             pos=i.pos
             _image = pygame.image.fromstring(img.tobytes(),img.size,img.mode) 

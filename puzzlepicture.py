@@ -6,12 +6,12 @@ def load_image(files,lines):
     
     img=Image.open(files)
     x,y=img.size
-    x1,y1=int(x/lines),int(y/lines)
+    x1,y1=int(x/lines[1]),int(y/lines[0])
     brick_list=brick_group()
     ID=0
     
-    for i in range(lines):
-        for j in range(lines):
+    for i in range(lines[1]):
+        for j in range(lines[0]):
             loc=(i*x1,j*y1,(i+1)*x1,(j+1)*y1)
             a=brick([img.crop(loc),ID],(i,j))
             brick_list.add(a)
@@ -22,6 +22,9 @@ def load_image(files,lines):
     brick_list.remove(turn)
     
     return brick_list,(x1,y1),(x,y),turn
+
+def recreate_map(bricks):
+    pass
 
 def get_loc(loc,size):
     return [loc[0]//size[0],loc[1]//size[1]]
@@ -50,7 +53,7 @@ def move(click_loc,turn,brick_list):
     return turn,brick_list
 
 #be used to exam codes
-'''def output(maps,lines):
+def output(maps,lines):
     out=[]
     for i in range(lines):
         out.append([])
@@ -60,10 +63,10 @@ def move(click_loc,turn,brick_list):
         for j in range(lines):
             out[j][i]='-'
     for i in maps:
-        out[i[1]][i[0]]='*'
+        out[i.pos[1]][i.pos[0]]=i.img[1]
     for i in out:
         print(i)
-
+'''
 def isfinish(img1,img2):
     if img1==img2:
         return True

@@ -42,3 +42,7 @@ class brick_group(object):
 
     def __len__(self):
         return len(self.bricks)
+
+    def __iter__(self):
+        for i in self.bricks:
+            yield i
