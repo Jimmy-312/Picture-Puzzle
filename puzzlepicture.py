@@ -20,11 +20,28 @@ def load_image(files,lines):
     num=randint(0,len(brick_list)-1)
     turn=brick_list[num].pos
     brick_list.remove(turn)
+    ans=brick_list.get_id()
+    brick_list,turn=recreate_map(brick_list,turn,500)
     
-    return brick_list,(x1,y1),(x,y),turn
+    return brick_list,(x1,y1),(x,y),turn,ans
 
-def recreate_map(bricks):
-    pass
+def recreate_map(bricks,turn,time):
+    for i in range(time):
+        ch=get_choice(bricks,turn)
+        num=randint(0,len(ch)-1)
+        turn,bricks=move(ch[num],turn,bricks)
+    return bricks,turn
+
+def get_choice(bricks,t):
+    choice=[(t[0]+1,t[1]),(t[0]-1,t[1]),(t[0],t[1]-1),(t[0],t[1]+1)]
+    pos=bricks.get_pos()
+    d=[]
+    for i in choice:
+        if i not in pos:
+            d.append(i)
+    for i in d:
+        choice.remove(i)
+    return choice
 
 def get_loc(loc,size):
     return [loc[0]//size[0],loc[1]//size[1]]

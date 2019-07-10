@@ -13,9 +13,7 @@ def end_win(img1,img2,size,DIS):
 def main():
     print("Hello,Summer.")
     lines,files=(8,6),'example.jpg'
-    bricks,sep,size,turn=pz.load_image(files,lines)
-    ans=bricks.get_id()
-    #bricks=pz.recreate_map(bricks)
+    bricks,sep,size,turn,ans=pz.load_image(files,lines)
 
     pygame.init()
     DIS=pygame.display.set_mode(size)
