@@ -13,10 +13,13 @@ def end_win(img1,img2,size,DIS):
 def main():
     print("Hello,Summer.")
     lines,files=(8,6),'example.jpg'
-    bricks,sep,size,turn,ans=pz.load_image(files,lines)
+    bricks,sep,size,turn,ans,record=pz.load_image(files,lines)
+    fix_mode=False
 
     pygame.init()
     DIS=pygame.display.set_mode(size)
+    COUNT=USEREVENT+1
+    pygame.time.set_timer(COUNT,100)
  
     while True:
         DIS.fill((255,255,255))
@@ -32,6 +35,12 @@ def main():
                 x,y=pygame.mouse.get_pos()
                 pos=pz.get_loc((x,y),sep)
                 turn,bricks=pz.move(pos,turn,bricks)
+                record.append(turn)
+            elif event.type==KEYDOWN:
+                if event.key==K_f:
+                    fix_mode=not fix_mode
+            elif event.type==COUNT and fix_mode:
+                bricks,turn,record,fix_mode=pz.fake_cheat(bricks,turn,record,fix_mode)
         end_win(bricks.get_id(),ans,size,DIS)
         pygame.display.update()
 

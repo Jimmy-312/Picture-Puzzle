@@ -21,16 +21,25 @@ def load_image(files,lines):
     turn=brick_list[num].pos
     brick_list.remove(turn)
     ans=brick_list.get_id()
-    brick_list,turn=recreate_map(brick_list,turn,500)
+    brick_list,turn,record=recreate_map(brick_list,turn,500)
     
-    return brick_list,(x1,y1),(x,y),turn,ans
+    return brick_list,(x1,y1),(x,y),turn,ans,record
 
 def recreate_map(bricks,turn,time):
+    record_turn=[]
     for i in range(time):
         ch=get_choice(bricks,turn)
         num=randint(0,len(ch)-1)
+        record_turn.append(turn)
         turn,bricks=move(ch[num],turn,bricks)
-    return bricks,turn
+    return bricks,turn,record_turn
+
+def fake_cheat(bricks,turn,record,mode):
+    mode=True if record!=[] else False
+    if not mode:return bricks,turn,record,mode
+    turn,bricks=move(record[-1:][0],turn,bricks)
+    record.pop()
+    return bricks,turn,record,mode
 
 def get_choice(bricks,t):
     choice=[(t[0]+1,t[1]),(t[0]-1,t[1]),(t[0],t[1]-1),(t[0],t[1]+1)]
