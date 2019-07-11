@@ -20,7 +20,7 @@
 + it uses the **pillow** module to cut image
 + create every *brick* and add them to a *brick_group*
 + create the void bricks as *turn*
-+ it returns a *brick_group*, a tuple including every image's height and width, the whole image's height and width, *turn* and a dict to store the answer
++ it returns a *brick_group*, a tuple including every image's height and width, the whole image's height and width, *turn*, a dict to store the answer and a *record* to record the move history
 ### recreate_map
 + it needs three parameter which is a *brick_group*, *turn* and times( **to some degrees**, it can decide the difficulty of map)
 + it can make the right image into a puzzle
@@ -31,6 +31,9 @@
 + it's difficult to explain it here **(so just think it as what you think or you can ask me)**
 ### get_loc
 + transform the mouse's location to a brick position
+### fake_cheat
++ it just recover by the recorded history. *(so dumb)*
++ you can use it by press **K**
 ## brick.py *(a basic class)*
 + **pos**:store the position of bricks
 + **img**:[image object,ID]
