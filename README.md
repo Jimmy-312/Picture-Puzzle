@@ -33,7 +33,7 @@
 + transform the mouse's location to a brick position
 ### fake_cheat
 + it just recover by the recorded history. *(so dumb)*
-+ you can use it by press **K**
++ you can use it by press **F**
 ## brick.py *(a basic class)*
 + **pos**:store the position of bricks
 + **img**:[image object,ID]
@@ -45,7 +45,7 @@
 + it can be iterable
 + *brick_group[position or index]* returns a brick
 + *brick_group[position or index]=value* value must be a image object
-## main.py *(a UI using the pygame)*
+## main.py *(an UI using the pygame)*
 + **end_win**:judge whether solve the puzzle
 --------------------------------------
 # That's all, thank you for your reading!
