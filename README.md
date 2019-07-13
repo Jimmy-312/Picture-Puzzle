@@ -1,5 +1,9 @@
 # Picture-Puzzle
 **Move the bricks to make the right picture**
+## these packages must be included
++ tkinter
++ pygame
++ PIL(Pillow)
 # **It has these documents:**
 ## These are vs relevant *(it means you needn't see these as something important)*
 + /.vs
@@ -47,6 +51,8 @@
 + *brick_group[position or index]=value* value must be a image object
 ## main.py *(an UI using the pygame)*
 + **end_win**:judge whether solve the puzzle
++ **select_file**:use the *tkinter* to display the filedialog
++ **enter_game**:the welcome page of the game
 --------------------------------------
 # That's all, thank you for your reading!
 ## **PS:it's very*n tired to write a README :(**
