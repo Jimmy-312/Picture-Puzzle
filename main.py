@@ -10,17 +10,55 @@ def end_win(img1,img2,size,DIS):
     textpos = text.get_rect(center=(size[0]//2,size[1]//2))
     DIS.blit(text,textpos)
 
+def enter_game(DIS):
+    f=True
+    DIS.fill((0,0,0))
+    font=pygame.font.Font(None,56)
+    font2=pygame.font.Font(None,40)
+    text=font.render("Puzzle Picture",0,(255,255,255))
+    text2=font2.render("Select Image",0,(0,0,0))
+    textpos = text.get_rect(center=(250,70))
+    files=''
+    while f:
+        DIS.blit(text,textpos)
+        pygame.draw.rect(DIS,(255,255,255),(150,150,200,50))
+        DIS.blit(text2,(163,162))
+        for event in pygame.event.get():
+            if event.type==QUIT:
+                return False
+            if event.type==MOUSEBUTTONDOWN:
+                arrow=pygame.mouse.get_pressed()
+                pos=pygame.mouse.get_pos()
+                button=arrow[0]
+                if button==1 and 150<=pos[0]<=350 and 150<=pos[1]<=200:
+                    files=select_file()
+            if files!='':f=False
+            pygame.display.update()
+    return files
+
+def select_file():
+    import tkinter as tk
+    from tkinter import filedialog
+    root = tk.Tk()
+    root.withdraw()
+    file_path = filedialog.askopenfilename()
+    return file_path
+
 def main():
     print("Hello,Summer.")
-    lines,files=(8,6),'example.jpg'
-    bricks,sep,size,turn,ans,record=pz.load_image(files,lines)
+    lines=(8,6)
     fix_mode=False
 
     pygame.init()
+    DIS=pygame.display.set_caption("Puzzle Picture")
+    DIS=pygame.display.set_mode((500,300))
+    files=enter_game(DIS)
+
+    bricks,sep,size,turn,ans,record=pz.load_image(files,lines)
     DIS=pygame.display.set_mode(size)
     COUNT=USEREVENT+1
     pygame.time.set_timer(COUNT,100)
- 
+
     while True:
         DIS.fill((255,255,255))
         for i in bricks:
