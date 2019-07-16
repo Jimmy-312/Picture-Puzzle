@@ -53,6 +53,7 @@ def main():
     DIS=pygame.display.set_caption("Puzzle Picture")
     DIS=pygame.display.set_mode((500,300))
     files=enter_game(DIS)
+    if not files:return
 
     bricks,sep,size,turn,ans,record=pz.load_image(files,lines)
     DIS=pygame.display.set_mode(size)
